@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+
+    RewriteEngine On
+    #RewriteBase /
+    RewriteCond %{SCRIPT_FILENAME} !-d
+    RewriteCond %{SCRIPT_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^((?!public).*)$ Public/index.php [NC,QSA]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^((?!public).*)$ Public/index.php [NC,QSA,L]
+
+    AddDefaultCharset utf-8
+    AddCharset utf-8 .html .css .js .php
+    
+    Options -Indexes
+</IfModule>
